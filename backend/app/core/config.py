@@ -119,3 +119,16 @@ class Settings(BaseSettings):
 
 
 settings = Settings()  # type: ignore
+
+# app/config.py
+
+from pydantic import BaseSettings
+
+class Settings(BaseSettings):
+    DATABASE_URL: str = "postgresql+asyncpg://myuser:mypassword@localhost/mydatabase"
+
+    class Config:
+        env_file = ".env"
+
+settings = Settings()
+
